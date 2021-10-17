@@ -1,1 +1,142 @@
+@use '~@angular/material' as mat;
+
+@include mat.core();
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+$custom-mat-orange: (
+  50: #fbede0,
+  100: #f5d1b3,
+  200: #eeb380,
+  300: #e7944d,
+  400: #e27d26,
+  500: #dd6600,
+  600: #d95e00,
+  700: #d45300,
+  800: #cf4900,
+  900: #c73800,
+  A100: #fff2ef,
+  A200: #ffcabc,
+  A400: #ffa289,
+  A700: #ff8d6f,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$custom-mat-teal: (
+  50: #e6f2f3,
+  100: #c0dee2,
+  200: #97c8cf,
+  300: #6db2bb,
+  400: #4da2ad,
+  500: #2e919e,
+  600: #298996,
+  700: #237e8c,
+  800: #1d7482,
+  900: #126270,
+  A100: #a6f0ff,
+  A200: #73e7ff,
+  A400: #40dfff,
+  A700: #26daff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$custom-mat-purple: (
+  50: #fae7ff,
+  100: #f3c4fe,
+  200: #ec9dfe,
+  300: #e475fe,
+  400: #de58fd,
+  500: #d83afd,
+  600: #d434fd,
+  700: #ce2cfc,
+  800: #c825fc,
+  900: #bf18fc,
+  A100: #ffffff,
+  A200: #fefaff,
+  A400: #efc7ff,
+  A700: #e7adff,
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $light-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $dark-primary-text,
+    A400: $dark-primary-text,
+    A700: $dark-primary-text,
+  )
+);
+
+$my-primary: mat.define-palette($custom-mat-teal, 500);
+// $my-accent: mat.define-palette($custom-mat-orange, A200, A100, A400);
+$my-accent: mat.define-palette($custom-mat-orange, 500, A100, A400);
+$my-warn: mat.define-palette($custom-mat-purple, 500, A100, A400);
+
+$my-theme: mat.define-light-theme((
+ color: (
+   primary: $my-primary,  
+   accent: $my-accent,
+   warn: $my-warn,
+ )
+));
+
+// Emit theme-dependent styles for common features used across multiple components.
+@include mat.core-theme($my-theme);
+
+// Emit styles for MatButton based on `$my-theme`. Because the configuration
+// passed to `define-light-theme` omits typography, `button-theme` will not
+// emit any typography styles.
+@include mat.button-theme($my-theme);
+
+// Include the theme mixins for other components you use here.
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
